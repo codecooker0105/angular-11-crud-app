@@ -45,6 +45,8 @@ export class TutorialDetailsComponent implements OnInit {
       published: status
     };
 
+    this.message = '';
+
     this.tutorialService.update(this.currentTutorial.id, data)
       .subscribe(
         response => {
@@ -58,11 +60,13 @@ export class TutorialDetailsComponent implements OnInit {
   }
 
   updateTutorial(): void {
+    this.message = '';
+
     this.tutorialService.update(this.currentTutorial.id, this.currentTutorial)
       .subscribe(
         response => {
           console.log(response);
-          this.message = response.message;
+          this.message = response.message ? response.message : 'This tutorial was updated successfully!';
         },
         error => {
           console.log(error);

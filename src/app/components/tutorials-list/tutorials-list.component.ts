@@ -55,6 +55,9 @@ export class TutorialsListComponent implements OnInit {
   }
 
   searchTitle(): void {
+    this.currentTutorial = undefined;
+    this.currentIndex = -1;
+
     this.tutorialService.findByTitle(this.title)
       .subscribe(
         data => {
